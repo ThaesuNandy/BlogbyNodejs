@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<nav>
+    <div class="container">
+        <div>
+            <h1> My Blog</h1>
+        </div>
+        <ul>
+            <li class="nav-item">
+                <a href="/" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="/about"  class="nav-link">About</a>
+            </li>
+            <li class="nav-item">
+                <a href="/login"  class="nav-link">Login</a>
+            </li>
+            <li class="nav-item">
+                <a href="/create-post"  class="nav-link">Post</a>
+            </li>
+        </ul>
+    </div>
+<body>
+    <div class="row">
+        <div class="card">
+            <h1>Create Post</h1>
+            <form action="/post" class="post_form" method="post" enctype='multipart/form-data'>
+                <input type="text" name="post_name" placeholder="Post Name">
+                <input type="file" name="image" >
+                <textarea name="description" id="" cols="30" rows="10" placeholder="Description"></textarea>
+                <button class="create_btn" type="submit">Create New Post</button>
+            </form>
+        </div>
+    </div>
+   
+   
+</body>
+</html>
