@@ -4,7 +4,8 @@ const route = express.Router();
 
 route.get("/login", (req, res) => {
     // res.send('<Form action="/login" method="POST"><input name="username" type="text"></input><button type="submit">login</button></Form>');
-    res.sendFile('login.html', { root : "views" });
+    //res.sendFile('login.html', { root : "views" });
+    res.render("login");
 });
 
 route.post("/login", (req, res) => {
@@ -18,7 +19,8 @@ route.post("/login", (req, res) => {
 
 route.get("/register", (req, res) => {
     // res.send('<Form action="/register" method="POST"><input name="username" type="text"></input><button type="submit">register</button></Form>')
-   return  res.sendFile('register.html', { root : "views" });
+    //return  res.sendFile('register.html', { root : "views" });
+    res.render("register");
 });
 
 route.post("/register", (req, res) => {

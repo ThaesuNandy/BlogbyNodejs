@@ -1,0 +1,23 @@
+.blog-card{
+    width: 400px;
+    padding: 1rem ;
+    box-shadow: 2px 2px 10px #0000003f;
+    border-radius: 6px;
+}
+
+.blog-img{
+    width: 100%;
+}
+.blog-img img{
+    width: 100%;
+}
+
+.blog-title {
+    font: 600 28px inherit;
+    margin: 0.5rem 0;
+}
+
+.blog-desc {
+    font-size: 14px;
+    color: #777;
+}

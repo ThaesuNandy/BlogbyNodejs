@@ -13,6 +13,8 @@ const app = express();
 const authRoute = require('./routers/authRoute');
 const rootRoute = require('./routers');
 
+
+app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended : true }));
 app.use(express.static("public"));
 

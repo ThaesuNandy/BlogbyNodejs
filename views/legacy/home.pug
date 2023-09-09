@@ -1,0 +1,29 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Document
+        link(rel="stylesheet", href="/css/style.css")
+        link(rel="stylesheet", href="/css/BlogCard.css")
+    body 
+        nav 
+            div.container
+                div 
+                    h1 My Blog 
+                ul 
+                    li.nav-item 
+                        a.nav-link(href="/") Home
+                    li.nav-item 
+                        a.nav-link(href="/about") About
+                    li.nav-item 
+                        a.nav-link(href="/create-post") Create
+                    li.nav-item 
+                        a.nav-link(href="/register") Register
+        div.container
+            each blog in blogs
+                div.blog-card
+                    div.blog-img
+                        img(src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80", alt="Blog Image")
+                    h1.blog-title #{blog.title}
+                    p.blog-desc #{blog.description}

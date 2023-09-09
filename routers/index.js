@@ -3,8 +3,12 @@ const multer  = require('multer');
 const upload = multer({ dest : './public/image'})
 const path = require('path');
 
+let blogs;
+
 route.get("/", (req, res) => {
-   res.sendFile('home.html', {root : "views"});
+//    res.sendFile('home.html', {root : "views"});
+    //   res.render("home", {blogs : blogs});
+    res.render("home" , {blogs :blogs});
    
 });
 
@@ -28,15 +32,25 @@ route.get("/blogs/:blogId", (req, res) => {
 
 //create-post route
 route.get("/create-post", (req, res) => {
-    res.sendFile('post.html', { root : "views" });
+   // res.sendFile('post.html', { root : "views" });
+   res.render("createBlog");
 });
 
-route.post("/post", upload.single('image'), (req, res) => {
-    return res.status(201).json({
-        post_name : req.body.post_name,
-        image : req.file.filename,
-        description : req.body.description,
-    })
+route.post("/post", (req, res) => {
+    const { post_name, description } = req.body;
+    blogs = {
+        title : post_name,
+        description,
+    };
+    res.redirect("/");
 })
+
+// route.post("/post", upload.single('image'), (req, res) => {
+//     return res.status(201).json({
+//         post_name : req.body.post_name,
+//         image : req.file.filename,
+//         description : req.body.description,
+//     })
+// })
 
 module.exports = route;
