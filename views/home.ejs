@@ -1,12 +1,18 @@
 <%- include("./hoc/header.ejs") %>
+
+
     <div class="container">
-        <div class="blog-card">
-            <div class="blog-img">
-                <img src="image\pexels-skinny-alien-2318554.jpg" alt="">
+        <% if (blogs.length > 0) { %>
+         <% blogs.forEach(blog => { %>
+            <div class="blog-card">
+                <div class="blog-img">
+                    <img src="<%= blog?.imgUrl %>" alt="">
+                </div>
+                <h1 class="blog-title"><%= blog?.title %></h1>
+                <p class="blog-desc"><%= blog?.description %></p>
             </div>
-            <h1 class="blog-title"><%= blogs?.title %></h1>
-            <p class="blog-desc"><%= blogs?.description %></p>
-        </div>
+         <% }) %>
+        <% } %>
     </div>
   
 </body>

@@ -1,10 +1,17 @@
 <%- include("./hoc/header.ejs") %>
-    <form action="/register" method="post">
-        <input type="email" name="email" placeholder="Email">
-        <br/>
-        <input type="password" name="password" placeholder="Password">
-        <br/>
-        <button>Login</button>
-    </form>
+<div class="row">
+    <div class="card">
+        <h1>Register Form</h1>
+        <form action="/register"  class="post_form" method="post">
+            <input type="text" name="username" placeholder="username">
+            <input type="email" name="email" placeholder="Email">
+            <br/>
+            <input type="password" name="password" placeholder="Password">
+            <br/>
+            <button class="create_btn" type="submit">Register</button>
+        </form>
+    </div>
+</div>
+   
 </body>
 </html>

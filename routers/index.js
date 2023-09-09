@@ -1,16 +1,12 @@
 const route = require('express').Router();
-const multer  = require('multer');
-const upload = multer({ dest : './public/image'})
-const path = require('path');
+const homeController = require("../controllers/homeController");
+const postController = require("../controllers/postController");
 
-let blogs;
 
-route.get("/", (req, res) => {
-//    res.sendFile('home.html', {root : "views"});
-    //   res.render("home", {blogs : blogs});
-    res.render("home" , {blogs :blogs});
-   
-});
+
+
+
+route.get("/", homeController.homePage );
 
 route.get("/download", (req, res) => {
     const filePath = path.resolve(__dirname, "../public/image/flower.jpg");
@@ -31,19 +27,9 @@ route.get("/blogs/:blogId", (req, res) => {
 });
 
 //create-post route
-route.get("/create-post", (req, res) => {
-   // res.sendFile('post.html', { root : "views" });
-   res.render("createBlog");
-});
+route.get("/create-post", postController.createPostPage);
 
-route.post("/post", (req, res) => {
-    const { post_name, description } = req.body;
-    blogs = {
-        title : post_name,
-        description,
-    };
-    res.redirect("/");
-})
+route.post("/post",postController.createPostController);
 
 // route.post("/post", upload.single('image'), (req, res) => {
 //     return res.status(201).json({

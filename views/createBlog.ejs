@@ -2,9 +2,9 @@
     <div class="row">
         <div class="card">
             <h1>Create Post</h1>
-            <form action="/post" class="post_form" method="post">
+            <form action="/post" class="post_form" method="post" enctype="multipart/form-data">
                 <input type="text" name="post_name" placeholder="Post Name">
-                <input type="file" name="image" >
+                <input type="file" name="image" accept=".jpg, .jpeg, .png, .svg" >
                 <textarea name="description" id="" cols="30" rows="10" placeholder="Description"></textarea>
                 <button class="create_btn" type="submit">Create New Post</button>
             </form>

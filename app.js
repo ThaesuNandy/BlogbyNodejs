@@ -17,6 +17,7 @@ const rootRoute = require('./routers');
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended : true }));
 app.use(express.static("public"));
+app.use(express.static("uploads"));
 
 app.use((req, res, next) => {
     console.log("Im middleware");
