@@ -1,7 +1,7 @@
 <%- include("./hoc/header.ejs") %>
 <div class="row">
-    <div class="card">
-        <h1>Login Form</h1>
+    <div class="form-container">
+        <h1>Welcome Back</h1>
         <form action="/login"  class="post_form" method="post">
             <input type="email" name="email" placeholder="Email">
             <br/>
@@ -9,6 +9,9 @@
             <br/>
             <button class="create_btn" type="submit">Login</button>
         </form>
+        <p>
+            Are you newbie? Please <a href="/signup">Register</a>
+        </p>
     </div>
 </div>
 </body>

@@ -1,7 +1,7 @@
 <%- include("./hoc/header.ejs") %>
 
 
-    <div class="container">
+    <div class="grid-container">
         <% if (blogs.length > 0) { %>
          <% blogs.forEach(blog => { %>
             <div class="blog-card">
@@ -10,7 +10,10 @@
                 </div>
                 <h1 class="blog-title"><%= blog?.title %></h1>
                 <p class="blog-desc"><%= blog?.description %></p>
+                <a href="/posts/<%= blog._id %>/edit">Edit</a>
+                <a href="/posts/<%= blog._id %>/delete">Delete</a>
             </div>
+          
          <% }) %>
         <% } %>
     </div>

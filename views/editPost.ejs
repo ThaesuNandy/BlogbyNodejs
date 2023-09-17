@@ -1,0 +1,14 @@
+<%- include("./hoc/header.ejs") %>
+    <div class="row">
+        <div class="card">
+            <h1>Edit Post</h1>
+            <form action="/posts/<%= post._id %>" class="post_form" method="post" >
+                <input type="text" name="title" placeholder="Post Name" value="<%= post.title %>">
+                <!-- <input type="file" name="image" accept=".jpg, .jpeg, .png, .svg" > -->
+                <textarea name="description" id="" cols="30" rows="10" placeholder="Description" ><%= post.description %></textarea>
+                <button class="create_btn" type="submit">Update Post</button>
+            </form>
+        </div>
+    </div> 
+</body>
+</html>

@@ -1,33 +1,9 @@
-
-const multer  = require('multer');
-const path = require('path');
-const fs = require("fs");
+const { save,find } = require('../util/post');
+const { upload } = require('../util/upload');
 
 exports.createPostPage = (req, res) => {
-    res.render("createBlog");
+    res.render("createBlog", {route : "/create-post"});
 };
-
-const upload = multer({
-    storage : multer.diskStorage({
-        destination : (req, file, cb) => {
-            cb(null, "uploads/")
-        },
-        filename : (req, file, cb) => {
-            cb( null , file.originalname);
-        },
-    }),
-    fileFilter : (req, file, cb) => {
-        const validateFileTypes = ["jpg", "jpeg", "svg"];
-        const incomingFileType = file.mimetype.split("/")[1]
-        validateFileTypes.includes(incomingFileType) ?
-         cb(null, true) :
-         cb(new Error("Invalid file type"), false);
-    }
-}).single('image');
-
-const blogPath = path.resolve(__dirname, "../model/blog.json");
-const data = fs.readFileSync(blogPath, "utf-8");
-const blogJson = JSON.parse(data);
 
 exports.createPostController = (req, res) => {
     upload(req, res , (err)=>{
@@ -37,16 +13,41 @@ exports.createPostController = (req, res) => {
           });
         }
         const { post_name, description } = req.body;
+        const blogJson = find();
         blogJson.push({
             title : post_name,
             imgUrl : req.file.filename,
             description,
         });
-
-        const blogJsonString = JSON.stringify(blogJson);
-        fs.writeFileSync(blogPath,blogJsonString);
-      
+        save(blogJson);
         res.redirect("/");
     });
    
 };
+
+exports.editPageController = (req, res) => {  
+    const { postId } = req.params;
+    const posts = find();
+    const index = posts.findIndex( (post) => post._id === postId); 
+    res.render("editPost", {route : "/edit-post", post: posts[index] });
+};
+
+exports.editController = (req, res) => {
+    const {postId} = req.params;
+    const { title, description } = req.body;
+    const posts = find();
+    const index = posts.findIndex( (post) => post._id === postId);
+    posts[index].title = title;
+    posts[index].description = description;
+    save(posts);
+    res.redirect("/"); 
+};
+
+exports.deletePostController = (req, res) => {
+    const {postId} = req.params;
+    const posts = find();
+    const index = posts.findIndex( (post) => post._id === postId);
+    posts.splice(index,1);
+    save(posts);
+    res.redirect("/");
+}

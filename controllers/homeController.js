@@ -1,10 +1,6 @@
-const path = require('path');
-const fs = require("fs");
-
-const blogPath = path.resolve(__dirname, "../model/blog.json");
-const data = fs.readFileSync(blogPath, "utf-8");
-const blogJson = JSON.parse(data);
+const post = require("../util/post");
 
 exports.homePage = (req, res) => {
-    res.render("home" , {blogs : blogJson });
+    const posts = post.find();
+    res.render("home" , {blogs : posts , route : "/" });
 };

@@ -22,6 +22,13 @@ nav {
     justify-content: space-between;
     align-items: center;
 }
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 2rem;
+    width: 80%;
+    margin: 0 auto;
+}
 ul {
     display: flex;
 }
@@ -32,6 +39,10 @@ ul {
 .nav-link {
     text-decoration: none;
     color : #000;
+}
+
+.nav-link.active {
+    color: yellow;
 }
 .card{
    
@@ -68,4 +79,8 @@ input, textarea {
 
 #post_btn:hover {
     background-color: #0056b3;
+}
+.form-container {
+    width: 40%;
+    margin: 5% auto auto auto;
 }

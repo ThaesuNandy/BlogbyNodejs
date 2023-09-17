@@ -3,9 +3,6 @@ const homeController = require("../controllers/homeController");
 const postController = require("../controllers/postController");
 
 
-
-
-
 route.get("/", homeController.homePage );
 
 route.get("/download", (req, res) => {
@@ -30,13 +27,9 @@ route.get("/blogs/:blogId", (req, res) => {
 route.get("/create-post", postController.createPostPage);
 
 route.post("/post",postController.createPostController);
+route.get("/posts/:postId/edit", postController.editPageController);
+route.post("/posts/:postId", postController.editController);
+route.get("/posts/:postId/delete", postController.deletePostController);
 
-// route.post("/post", upload.single('image'), (req, res) => {
-//     return res.status(201).json({
-//         post_name : req.body.post_name,
-//         image : req.file.filename,
-//         description : req.body.description,
-//     })
-// })
 
 module.exports = route;

@@ -1,46 +1,16 @@
 const express = require("express");
 const route = express.Router();
-const path = require('path');
-const fs = require("fs");
+const authController = require('../controllers/authController');
 
-const userPath = path.resolve(__dirname, "../model/user.json");
-const data = fs.readFileSync(userPath, "utf-8");
-const userJson = JSON.parse(data);
 
 //Login Route
-route.get("/login", (req, res) => {
-    res.render("login");
-});
+route.get("/login",authController.SigninPageController);
 
-route.post("/login", (req, res) => {
-   const { email, password } = req.body;
-   const matchingUser = userJson.find(user => user.email === email && user.password === password);
-   if(matchingUser) {
-        return res.redirect('/');  
-   }else {
-        res.status(400).json({
-            message: "Login Failed!"
-        });
-   }    
-});
+route.post("/login", authController.signinController);
 
 //Register route
-route.get("/register", (req, res) => {
-    res.render("register");
-});
+route.get("/signup",authController.SignupPageController);
 
-route.post("/register", (req, res) => {
-    const { username, email, password } = req.body;
-    userJson.push ({
-        name : username,
-        email,
-        password,
-    });
-
-    const UserJsonString = JSON.stringify(userJson);
-    fs.writeFileSync(userPath, UserJsonString);
-    return res.redirect('/');  
-   
- });
+route.post("/signup",authController.signupController );
 
 module.exports = route;

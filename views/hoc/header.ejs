@@ -15,19 +15,16 @@
             </div>
             <ul>
                 <li class="nav-item">
-                    <a href="/" class="nav-link">Home</a>
+                    <a href="/" class="<%= route === '/' ? 'nav-link active' : 'nav-link' %>">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/about"  class="nav-link">About</a>
+                    <a href="/about"  class="<%= route === '/about' ? 'nav-link active' : 'nav-link' %>">About</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/create-post"  class="nav-link">Create</a>
+                    <a href="/create-post"  class="<%= route === '/create-post' ? 'nav-link active' : 'nav-link' %>">Create</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/login"  class="nav-link">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/register"  class="nav-link">SignUp</a>
+                    <a href="/login"  class="<%= route === '/login' ? 'nav-link active' : 'nav-link' %>">Login</a>
                 </li>
             </ul>
         </div>
